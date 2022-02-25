@@ -1,35 +1,17 @@
 <template>
   <div>
-    <h1>Counter Component: {{ number }}</h1>
+    <h1>Counter Component: {{ value }}</h1>
     <div>
-      <input type="number" v-model="number" />
-      <button v-on:click="increment">Increment</button>
-      <button v-on:click="decrement">Decrement</button>
+      <input type="number" :value="value" @input="$emit('input', $event.target.value)" />
+      <button @click="$emit('increment')">Increment</button>
+      <button @click="$emit('decrement')">Decrement</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "@vue/composition-api";
-
-/**
- * @type {number}
- */
-const number = ref(0);
-
-/**
- * @returns {void}
- */
-function increment() {
-  number.value++;
-}
-
-/**
- * @returns {void}
- */
-function decrement() {
-  number.value--;
-}
+const props = defineProps(['value'])
+defineEmits(['input', 'increment', 'decrement'])
 
 </script>
 

@@ -2,7 +2,10 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Hello Vue 2 + Vite" />
-    <Counter/>
+
+    <h1>App Component: {{ applicationNumber }}</h1>
+    <button @click="applicationNumber+=10">Increment Ten From Parent Cmponent</button>
+    <Counter v-model="applicationNumber" @increment="applicationNumber++" @decrement="applicationNumber--" />
   </div>
 </template>
 
@@ -14,6 +17,11 @@ export default {
     HelloWorld,
     Counter
   },
+  data() {
+    return {
+      applicationNumber: 10
+    }
+  }
 };
 </script>
 
