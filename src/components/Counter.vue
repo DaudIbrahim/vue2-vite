@@ -13,24 +13,21 @@
 const props = defineProps({
   value: {
     type: Number,
-    required: true,
-    default: 0
+    required: true
   }
 })
 
 const emit = defineEmits(['input'])
 
 /**
- * @param {number}  num
- * @returns {void}
+ * @param {number} num
  */
 const increment = (num) => {
   emit('input', ++num)
 }
 
 /**
- * @param {number}  num
- * @returns {void}
+ * @param {number} num
  */
 const decrement = (num) => {
   emit('input', --num)
