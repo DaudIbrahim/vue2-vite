@@ -1,20 +1,24 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <hello-world msg="Hello Vue 2 + Vite" />
+    <hello-world msg="Hello Vue 2 + Pinia + Vite" />
 
-    <h1>App Component: {{ applicationNumber }}</h1>
-    <button @click="applicationNumber+=10">Increment Ten From Parent Cmponent</button>
-    <counter v-model="applicationNumber" />
+    <h1>App Component: {{ counter.count }}</h1>
+  
+    <button @click="counter.incrementCount(10)">Increment Ten From App Cmponent</button>
+    <button @click="counter.$reset()">Reset State</button>
+    <button @click="counter.emptyCount()">Empty</button>
+  
+    <counter v-model="counter.count" />
   </div>
 </template>
 
 <script setup>
-import { ref } from '@vue/composition-api'
+import { useCounterStore } from './stores/counter'
 import HelloWorld from './components/HelloWorld.vue';
 import Counter from './components/Counter.vue';
 
-const applicationNumber = ref(10)
+const counter = useCounterStore()
 </script>
 
 <style>
