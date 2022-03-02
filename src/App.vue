@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <hello-world msg="Hello Vue 2 + Pinia + Vite" />
+    <!-- <hello-world msg="Hello Vue 2 + Pinia + Vite" />
 
     <h1>App Component: {{ counter.count }}</h1>
   
@@ -9,7 +9,9 @@
     <button @click="counter.$reset()">Reset State</button>
     <button @click="counter.emptyCount()">Empty</button>
   
-    <counter v-model="counter.count" />
+    <counter v-model="counter.count" /> -->
+
+    <login/>
   </div>
 </template>
 
@@ -17,6 +19,7 @@
 import { useCounterStore } from './stores/counter'
 import HelloWorld from './components/HelloWorld.vue';
 import Counter from './components/Counter.vue';
+import Login from './components/Login.vue';
 
 const counter = useCounterStore()
 </script>
