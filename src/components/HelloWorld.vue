@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <h1>{{ msg }}</h1> -->
-
+    <h1 class="title">{{ msg }}</h1>
     <p>
       <a href="https://vuejs.org/v2/guide/" target="_blank"
         >Vue 2 Documentation</a
@@ -15,30 +14,17 @@
         >Vite Documentation</a
       >
     </p>
-
-    <!-- <button @click="count++">count is: </button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test hot module replacement.
-    </p> -->
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    msg: String,
-  },
-  data() {
-    return {
-      count: 0,
-    };
-  },
-};
+<script setup>
+const props = defineProps({
+  msg: {
+    type: String,
+    default: 'Hello Vue'
+  }
+})
 </script>
 
 <style scoped>
-a {
-  color: #42b983;
-}
 </style>

@@ -13,3 +13,4 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 - [How to use Vue 2 with Vite - Mat's Blog](https://www.mathew-paul.nz/posts/how-to-use-vue2-with-vite/)
 - [JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
 - [When it's really needed to use toRefs in order to retain reactivity of reactive value](https://github.com/vuejs/rfcs/issues/145#issue-585482022)
+- [Import Aliases in Vite - Daniel Kelly](https://vueschool.io/articles/vuejs-tutorials/import-aliases-in-vite/)

@@ -21,7 +21,11 @@
 
 <script setup>
 import { ref, reactive, watch } from '@vue/composition-api'
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from '@/hooks/vueRouter'
 
+const router = useRouter()
+const authStore = useAuthStore()
 const email = ref('')
 const password = ref('')
 const validateObject = reactive({
@@ -61,10 +65,24 @@ watch(password, () => {
     }
 })
 
-const loginForm = () => {
-    console.log('Email', email.value)
-    console.log('Password', password.value)
-    alert('Form Submit')
+const loginForm = async () => {
+    if (!validateObject.email.is_valid || !validateObject.password.is_valid) return
+
+    try {
+        const result = await authStore.userLoginAction({email: email.value, password: password.value})
+
+        // Mutate Store
+        authStore.userId = result.data.data.id
+        authStore.token = result.data.data.token
+
+        // Success Redirect
+        router.push({ path: '/' })
+
+    } catch (error) {
+        console.error(error)
+    } finally {
+
+    }
 }
 
 </script>

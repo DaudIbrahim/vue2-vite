@@ -1,36 +1,40 @@
 <template>
-  <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-    <!-- <hello-world msg="Hello Vue 2 + Pinia + Vite" />
+  <div id="app" class="container mt-5">
+    <nav class="level">
+      <p class="level-item has-text-centered">
+        <router-link to="/">Home</router-link>
+      </p>
+      <p class="level-item has-text-centered">
+        <router-link to="/test">Test API</router-link>
+      </p>
+      <p v-if="!authStore.isLoggedIn" class="level-item has-text-centered">
+        <router-link to="/login">Login</router-link>
+      </p>
+    </nav>
 
-    <h1>App Component: {{ counter.count }}</h1>
-  
-    <button @click="counter.incrementCount(10)">Increment Ten From App Cmponent</button>
-    <button @click="counter.$reset()">Reset State</button>
-    <button @click="counter.emptyCount()">Empty</button>
-  
-    <counter v-model="counter.count" /> -->
+    <section>
+      <router-view></router-view>
+    </section>
 
-    <login/>
+    <section v-if="authStore.isLoggedIn" class="mt-5">
+      <p>
+        <b-button native-type="button" @click="logout">Logout - {{ authStore.userId }} </b-button>
+      </p>
+    </section>
   </div>
 </template>
 
 <script setup>
-import { useCounterStore } from './stores/counter'
-import HelloWorld from './components/HelloWorld.vue';
-import Counter from './components/Counter.vue';
-import Login from './components/Login.vue';
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from '@/hooks/vueRouter'
+const router = useRouter()
+const authStore = useAuthStore()
 
-const counter = useCounterStore()
+const logout = () => {
+  authStore.userLogoutAction()
+  router.go()
+}
 </script>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
 </style>
