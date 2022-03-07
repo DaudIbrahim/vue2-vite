@@ -8,12 +8,16 @@ Vue.use(VueRouter)
 import HelloWorld from '@/components/HelloWorld.vue'
 import Test from '@/components/Test.vue'
 import Login from '@/components/Login.vue'
+import Tasks from '@/components/Tasks.vue'
+import CreateTask from '@/components/CreateTask.vue'
 
 // 2. Define some routes (Each route should map to a component.)
 const routes = [
   { path: '/', component: HelloWorld },
   { path: '/test', component: Test },
   { path: '/login', component: Login },
+  { path: '/tasks', component: Tasks },
+  { path: '/create-task', component: CreateTask },
   { path: '*', component: HelloWorld}
 ]
 
