@@ -28,7 +28,6 @@ const get = async () => {
     try {
         const result = await taskService.fetchTasksService()
         testData.value = result.data.data.tasks[result.data.data.tasks.length - 1]
-        console.log(result)
     } catch (error) {
         console.error(error)
     }
@@ -44,7 +43,6 @@ const post = async () => {
         }
         const result = await taskService.addTaskService(temp)
         testData.value = result.data
-        console.log(result)
     } catch (error) {
         console.error(error)
     }
@@ -60,7 +58,6 @@ const put = async () => {
         }
         const result = await taskService.updateTaskService(761747321647818, temp)
         testData.value = result.data
-        console.log(result)
     } catch (error) {
         console.error(error)
     }
@@ -70,7 +67,6 @@ const deleteTask = async () => {
     try {
         const result = await taskService.deleteTaskService(761747321647818)
         testData.value = result.data
-        console.log(result)
     } catch (error) {
         console.error(error)
     }
